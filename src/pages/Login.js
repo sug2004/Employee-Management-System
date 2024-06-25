@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
 import Validation from './LoginValidation';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
   const [values,setValues]= useState({
     email:'',
     password:''
   })
+  const navigate = useNavigate();
   const [errors,setErrors]=useState({})
   const handleInput =(event)=>{
     setValues(prev =>({...prev,[event.target.name]:[event.target.value]}))
@@ -14,11 +17,21 @@ function Login() {
   const handleSubmit =(event) =>{
     event.preventDefault();
     setErrors(Validation(values));
+    axios.post('http://localhost:8081/login', values)
+            .then(res => {
+              if(res.data==="success"){
+              navigate('/home')
+  }
+              else{
+                alert("No record existed");
+              }
+            })
+            .catch(err => console.log(err));
   }
   return (
     <div className='d-flex justify-content-center align-items-center bg-secondary vh-100'>
     <div className='bg-white p-3 rounded w-25'>
-    <h2>Sign up</h2>
+    <h2>Sign In</h2>
         <form action="" onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label htmlFor="email"><strong>Email</strong></label>

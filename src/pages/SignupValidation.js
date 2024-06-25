@@ -12,13 +12,13 @@ function Validation(values) {
     } else {
         error.number = "";
     }
-    // if(values.name == "") {
+    if(values.name == "") {
     
-    // error.name = "name should not be empty"
-    // }
-    // else{
-    //     error.name=""
-    // }
+    error.name = "name should not be empty"
+    }
+    else{
+        error.name=""
+    }
     if(!email_pattern.test(values.email)) {
     
     
@@ -35,10 +35,10 @@ function Validation(values) {
     error.password = "Password should not be empty"
     }
     
-    // else if(!password_pattern.test(values.password)) {
-    //      error.password = "Password didn't match"
+    else if(!password_pattern.test(values.password)) {
+         error.password = "Password didn't match"
     
-    // }
+    }
     else {
         error.password=""
     }

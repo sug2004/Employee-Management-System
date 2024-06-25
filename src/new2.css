@@ -1,0 +1,20 @@
+.box .section {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  @media (max-width: 768px) {
+   .box {
+      flex: 1 0 50%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+   .box {
+      flex: 1 0 100%;
+    }
+  }
