@@ -132,7 +132,7 @@ function Home() {
                     <div className="users">
                       <h2>Users</h2>
                       <p>15 Users</p>
-                      <button>Manage Users</button>
+                      <button>Manage  Users</button>
                     </div>
                   </div>
                 </div>
