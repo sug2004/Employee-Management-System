@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
-    name: {
+    project_name: {
         type: String,
         required: true
     },
-    description: {
+    project_description: {
         type: String,
         required: true
     },
-    lead: {
+    project_lead: {
         type: Schema.Types.ObjectId,
         ref: 'Employee',
         required: true
