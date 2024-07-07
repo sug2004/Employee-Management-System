@@ -31,7 +31,13 @@ export default function Login() {
             if (res.data.message === "success") {
                 localStorage.setItem('token', res.data.token);
                 if(res.data.result.role==="admin"){
-                navigate('/admin'); 
+                navigate('/admin/dashboard'); 
+                }
+                else if(res.data.result.role==="HR"){
+                navigate('/hr/dashboard'); 
+                }   
+                else if(res.data.result.role==="employee"){
+                navigate('/employee/dashboard'); 
                 }
             } else {
                 alert("Login unsuccessful. Please check your email and password.");
@@ -46,8 +52,8 @@ export default function Login() {
     return (
         <>
             <div className="h-screen w-screen bg-primary flex justify-center items-center">
-                <Card className="w-fit h-fit p-10">
-                    <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+                <Card className="w-fit h-fit ">
+                    <form onSubmit={handleSubmit} className="flex flex-col space-y-4 p-8" >
                         <Input
                             label="Email"
                             placeholder="Email"
@@ -55,7 +61,7 @@ export default function Login() {
                             value={values.email}
                             onChange={handleChange}
                             required
-                            className="w-80"
+                            className="w-60 md:w-96"
                             type="email"
                         />
                         <Input
@@ -65,7 +71,7 @@ export default function Login() {
                             value={values.password}
                             onChange={handleChange}
                             type="password"
-                            className="w-80"
+                            className="w-60 md:w-96"
                             required
                         />
                         <Button variant="default" size="default" type="submit">Login</Button>
