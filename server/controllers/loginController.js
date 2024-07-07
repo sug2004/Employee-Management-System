@@ -16,4 +16,15 @@ async function login(req, res) {
     }
 }
 
-module.exports = { login };
+
+async function register(req, res) {
+    try {
+        const { first_name, last_name, email, password, role } = req.body;
+        const result = await loginService.register(first_name, last_name, email, password, role);
+        res.status(200).json(result);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+module.exports = { login,register };
